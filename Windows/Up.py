@@ -19,7 +19,3 @@ while(stat=="down"):
     up(ip)
 
 os.system("del pingRes.txt")
-
-
-
-
