@@ -2,7 +2,7 @@
 import socket
 import os
 
-PortList=[20,22,23,80,110,443,]
+PortList=[20,22,23,80,110,443]
 
 def PScan(ip,port):
    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,6 +27,7 @@ IP=input("Enter IP to scan for mostly open ports:")
 def mainMenu():
     os.system("cls")
     global PortList
+    PortList=[20,22,23,80,110,443]
     portCh = input("Most Used Ports(M)\nCustom Ports Listing(C)\nRange(R)\n\n")
     if(portCh.lower()=="m"):
         BasicScan(IP)
