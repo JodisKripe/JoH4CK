@@ -1,4 +1,4 @@
-#py2exec auto
+#py2exec A utility mainly to get a single file in which you can fit the program.
 import os
 
 
