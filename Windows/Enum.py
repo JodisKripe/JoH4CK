@@ -4,7 +4,7 @@ from termcolor import colored
   
 init() 
   
-print(colored('Hello, World!', 'green', 'on_red'))
+#print(colored('Hello, World!', 'green', 'on_red'))
 
 '''
 def prRed(skk): print("\033[91m {}\033[00m" .format(skk)) 
