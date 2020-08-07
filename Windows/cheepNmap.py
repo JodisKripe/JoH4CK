@@ -1,4 +1,5 @@
-#
+#CheepNMAP
+
 import os
 import time
 
@@ -51,7 +52,7 @@ def dope():
     if (__name__=="__main__"):
         initialize()
         baseip=input("Enter base ip(eg. 192.168.0): ")
-        RangeStart=int(input("Enter starting of range: "))
+        RangeStart=int(input("Enter Starting of range: "))
         RangeEnd=int(input("Enter Ending of range: "))
         os.system("cls")
         gen(baseip , RangeStart , RangeEnd)
