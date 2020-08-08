@@ -1,7 +1,8 @@
 import os
 import time
 def up(IP):
-    string="ping "+IP+" > pingRes.txt"
+    Timeout=10 # milliseconds
+    string="ping -n 1 -w " + Timeout + " " +IP+" > pingRes.txt"
     os.system(string)
     global stat
     stat="down"
