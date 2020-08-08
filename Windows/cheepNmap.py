@@ -1,32 +1,32 @@
-#CheepNMAP
-
+#CheepNmap
 import os
 import time
 
-def gen(BaseIp , start , stop):
-    global esto , endo ,bint
-    esto = start
-    endo = stop
+def gen(BaseIp , Range):
+    global esto , endo ,bint, glorange
+    glorange=Range
+    #esto = start
+    #endo = stop
     bint = BaseIp
-    for i in range(start,stop):
+    for i in Range:
         filename="Scan/nmap"+str(i)+".py"
         with open(filename,"w+") as dope:
             command="import os\n\nos.system(\"ping -n 1 -w 10 " + BaseIp + "." + str(i) + " > Scan/RES/" + str(i) + ".txt\")"
             dope.write(command)
 
 def doIt():
-    for i in range(esto, endo):
+    for i in glorange:
         command="python ./Scan/nmap"+str(i)+".py"
         os.system(command)
 
 def check():
     print("\n\n")
-    for i in range(esto, endo):
+    for i in glorange:
         filename="./Scan/RES/"+str(i)+".txt"
         with open(filename,"r") as yo:
             lines=yo.read().split()
             if("bytes=" in lines[10]):
-                output=bint + "." + str(i) + " is UP and Scannable"
+                output=bint + "." + str(i) + " is UP and Scannable\n"
                 print(output)
             #print(lines)
             #print(lines[7])
@@ -51,11 +51,24 @@ def cleanup():
 def dope():
     if (__name__=="__main__"):
         initialize()
+        seyt=[]
         baseip=input("Enter base ip(eg. 192.168.0): ")
-        RangeStart=int(input("Enter Starting of range: "))
-        RangeEnd=int(input("Enter Ending of range: "))
-        os.system("cls")
-        gen(baseip , RangeStart , RangeEnd)
+        option=int(input("\nEnter the way you want to select the range:\n1.Give them Individual Separated by space\n2.Starting and Ending Range\n3.Default(0-255)\n"))
+        if(option == 1):
+        	seyt=input("Give the last part of the address individually:\n").split()
+        	os.system('cls')
+        elif(option == 2):
+	        RangeStart=int(input("Enter starting of range: "))
+	        RangeEnd=int(input("Enter Ending of range: "))
+	        for i in range(RangeStart,RangeEnd+1):
+	        	seyt.append(i)
+	        os.system("cls")
+        elif(option==3):
+            for i in range(0,256):
+                seyt.append(i)
+            os.system("cls")
+        
+        gen(baseip , seyt)
         doIt()
         check()
         cleanup()
